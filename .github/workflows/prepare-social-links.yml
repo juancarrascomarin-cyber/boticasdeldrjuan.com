@@ -63,6 +63,8 @@ jobs:
                 <p class="social-links-note">Los enlaces se abren en otra pestaña.</p>
               </section>
           '''
+          css = css.lstrip('\n')
+          block = block.lstrip('\n')
           marker = '<p class="small">'
           assert original.count('</style>') == 1 and original.count(marker) == 1
           updated = original.replace('</style>', css + '</style>', 1).replace(marker, block + marker, 1)
