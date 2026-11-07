@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Laboratorio de tienda | 21 SKU de prueba | Boticas del Dr. Juan</title>
+<meta name="description" content="Vista de ensayo sin venta, sin captación de pedidos y sin inventario en tiempo real.">
+<style>
+:root{--vino:#80121f;--sangre:#ba1d29;--oro:#daa62c;--crema:#fff9ef;--texto:#35252b;--secundario:#736168;--borde:#eadcd8;--verde:#1c6851;--sombra:0 12px 32px rgba(82,21,23,.07)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--crema);color:var(--texto);line-height:1.5;margin:0}
+a{color:var(--vino)}
+header{background:linear-gradient(110deg,#63121d,#951c28);color:#fff;border-bottom:5px solid var(--oro)}
+.container{width:min(1180px,calc(100% - 36px));margin:auto}
+.brand{display:flex;align-items:center;gap:18px;padding:20px 0}
+.brand img{width:104px;height:72px;object-fit:contain;background:#fff;padding:8px;border-radius:13px}
+.brand .subtitle{opacity:.86;font-size:.91rem}
+.brand h1{margin:0;font-size:clamp(1.48rem,3vw,2.35rem);line-height:1.12}
+.banner{background:#fff6d6;border:1px solid #f0d67b;border-left:6px solid var(--oro);padding:15px 19px;border-radius:13px;margin:24px 0;font-size:.94rem}
+.banner strong{color:#6c3716}
+.controls{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:11px;margin:23px 0}
+input,select,button{font:inherit}
+input,select{width:100%;padding:12px;border:1px solid #cbb9b4;border-radius:11px;background:#fff;color:var(--texto)}
+button{cursor:pointer;border:none;border-radius:10px;background:var(--vino);color:#fff;padding:12px 16px;font-weight:750}
+button:hover{background:#a21b2b}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+button.secondary{background:#eee2df;color:var(--vino)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 23px}
+.stat{background:#fff;border:1px solid var(--borde);border-radius:12px;padding:10px 16px;box-shadow:var(--sombra)}
+.stat strong{color:var(--vino);font-size:1.26rem}
+.stat span{color:var(--secundario);display:block;font-size:.82rem}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.card{background:#fff;border:1px solid var(--borde);border-radius:17px;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column}
+.art{height:152px;background:linear-gradient(135deg,#fff7e3,#f7ebe8);display:flex;align-items:center;justify-content:center;position:relative}
+.art .emoji{font-size:65px;filter:saturate(.65)}
+.art small{position:absolute;bottom:9px;left:9px;right:9px;background:#fffdf7e8;color:#6c5456;border-radius:6px;text-align:center;font-size:.72rem;padding:4px}
+.body{padding:17px;display:flex;flex-direction:column;flex:1;gap:9px}
+.chip{display:inline-block;background:#fcebdd;color:var(--vino);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:800;align-self:flex-start}
+.body h2{margin:1px 0 0;font-size:1rem;line-height:1.34;min-height:54px}
+.sku{color:var(--secundario);font-size:.78rem}
+.price{font-size:1.37rem;color:var(--vino);font-weight:850}
+.meta{color:#6c5d5f;font-size:.78rem}
+.card button{margin-top:auto;padding:9px;font-size:.9rem}
+.panel{background:#fff;border:1px solid var(--borde);border-radius:15px;padding:22px;margin:25px 0 38px}
+.panel h2{margin:0 0 8px;color:var(--vino)}
+.panel small{color:var(--secundario)}
+.panel textarea{width:100%;margin:12px 0;padding:13px;border-radius:10px;border:1px solid #dccaca;background:#fffbf5;color:#3f3030;resize:vertical;min-height:104px;font:inherit}
+.actionbar{display:flex;flex-wrap:wrap;gap:10px}
+.empty{grid-column:1/-1;background:#fff;border:1px dashed #dbc5bd;border-radius:16px;padding:35px;text-align:center}
+footer{padding:12px 0 40px;color:#756268;text-align:center;font-size:.87rem}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:740px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.controls{grid-template-columns:1fr 1fr}.controls #search{grid-column:1/-1}}
+@media(max-width:500px){.cards{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.controls #search{grid-column:auto}.brand img{width:75px;height:63px}.container{width:min(1180px,calc(100% - 26px))}}
+</style>
+</head>
+<body>
+<header><div class="container brand"><img src="/logo-dr-juan.webp" alt="Logo de Boticas del Dr. Juan"><div><div class="subtitle">EVCE-08 · LABORATORIO DE EXPERIENCIA DIGITAL</div><h1>Prueba del catálogo de 21 productos</h1><div class="subtitle">Boticas del Dr. Juan · versión experimental · 7 de noviembre de 2026</div></div></div></header>
+<main class="container">
+<div class="banner" role="note"><strong>SIMULACIÓN — NO ES UNA TIENDA NI UNA OFERTA DE VENTA.</strong> Los nombres y códigos provienen de ADESYNET; precios y cantidades son referencias de un corte, no disponibilidad en tiempo real. Fotografías genéricas de categoría, no envases reales. Nada de esta página permite efectuar pagos, reservar productos ni enviar pedidos. Las fichas no están aprobadas para comercialización online.</div>
+<div class="controls">
+<input id="search" type="search" placeholder="Buscar nombre o SKU…" aria-label="Buscar productos">
+<select id="cat" aria-label="Filtrar por categoría"><option value="">Todas las categorías</option></select>
+<select id="photo" aria-label="Estado de fotografía"><option value="">Todas las fotografías</option><option value="prioridad">Foto propia prioritaria</option><option value="referencia">Referencia web por verificar</option></select>
+<button id="reset" type="button" class="secondary">Limpiar</button>
+</div>
+<div class="stats"><div class="stat"><strong id="shown">21</strong><span>Fichas mostradas</span></div><div class="stat"><strong>21</strong><span>SKU de prueba</span></div><div class="stat"><strong>13</strong><span>Fotos propias prioritarias</span></div><div class="stat"><strong id="selected-count">0</strong><span>Unidades en simulación</span></div></div>
+<div id="cards" class="cards" aria-live="polite"></div>
+<section class="panel" aria-labelledby="request-title">
+<h2 id="request-title">Simulador de interés en productos</h2>
+<p>Usa los botones «Añadir a prueba» para evaluar el recorrido del cliente. La selección <strong>no se envía a ninguna persona ni servidor</strong> y se pierde al cerrar esta página.</p>
+<textarea id="selection" aria-label="Resumen de selección simulada" readonly placeholder="Agrega productos para ver una selección de ejemplo."></textarea>
+<div class="actionbar"><button type="button" id="copy">Copiar resumen de prueba</button><button type="button" class="secondary" id="clear-selection">Vaciar selección</button></div>
+<small id="copy-feedback" role="status">Precios informativos del corte de ADESY Bridge; no constituyen cotización.</small>
+</section>
+</main>
+<footer class="container">BOTICAS DEL DR. JUAN · IDEAFAB S.A. · Entorno demostrativo sin fotografías de terceros ni checkout.</footer>
+<script>
+"use strict";
+const data=[["88935","BELNATUR JABÓN GLICERINA ALOE VERA 90 G","Higiene personal",3.9,54,17,"🧼",true],["94299","DOVE JABÓN BABY HUMECTACIÓN SENSIBLE 75 G","Higiene personal",4.5,50,17,"🧼",false],["00003510","PROTEX JABÓN MEN ACTIVE SPORTS 110 G","Higiene personal",4.5,48,17,"🧼",false],["00000295","REXONA JABÓN FRESH ANTIBACTERIAL 84 G","Higiene personal",4,47,17,"🧼",true],["76944","CAMAY JABÓN ROSAS FRANCESAS 125 G","Higiene personal",4,47,17,"🧼",false],["00002644","BEIA CHAMPÚ QUINUA Y ÁCIDO HIALURÓNICO 500 ML","Cabello",20,12,11,"🧴",true],["99028","BEIA CHAMPÚ KERATINA Y ARGÁN 500 ML","Cabello",20,13,10,"🧴",false],["00001078","AVENGERS PASTA DENTAL CHICLE 50 G","Salud bucal",3.5,26,16,"🪥",true],["95387","AVENGERS PASTA DENTAL CHICLE 75 ML","Salud bucal",5.9,32,15,"🪥",true],["00001079","PEPPA PIG PASTA DENTAL CHICLE 50 G","Salud bucal",3.5,14,11,"🪥",true],["00003285","PLIM PLIM PASTA DENTAL CHICLE 50 G","Salud bucal",3.5,12,9,"🪥",true],["00003373","SENSODYNE CEPILLO MULTIPROTECCIÓN MEDIO","Salud bucal",15.9,6,6,"🪥",false],["00003375","SENSODYNE CEPILLO LIMPIEZA PROFUNDA SUAVE","Salud bucal",15.9,2,2,"🪥",true],["88020","NOSOTRAS PROTECTORES DIARIOS NORMAL DESODORANTE 15 UND","Higiene personal",4,39,17,"🌸",false],["92524","ISANA TALCO PIES MENTOLADO 60 G","Cuidado corporal",6.9,19,12,"🦶",false],["94382","ISANA TALCO PIES MENTOLADO 240 G","Cuidado corporal",15.9,19,12,"🦶",true],["90188","ISANA TALCO PIES TRIPLE ACCIÓN 60 G","Cuidado corporal",6.9,16,12,"🦶",true],["69989","LISTERINE ENJUAGUE COOLMINT ZERO 500 ML","Salud bucal",22.9,1,1,"🪥",false],["96231","STERILAB ALGODÓN BOLSA 25 G","Botiquín",1.9,150,17,"🩹",true],["96639","COPPON ALGODÓN HIDRÓFILO 100 G","Botiquín",5.5,40,14,"🩹",true],["00002712","CEPILLO DENTAL SILICONA CABEZAL EN U","Salud bucal",4,8,7,"🪥",true]];
+const selected=new Map();
+const cats=[...new Set(data.map(x=>x[2]))].sort();
+const cat=document.getElementById("cat");
+cats.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;cat.append(o)});
+const cards=document.getElementById("cards");
+const search=document.getElementById("search");
+const photo=document.getElementById("photo");
+function money(n){return "S/ "+Number(n).toFixed(2)}
+function renderSummary(){
+ let sum=0;let count=0;const lines=[];
+ for(const [sku,qty] of selected){const p=data.find(x=>x[0]===sku);if(!p)continue;count+=qty;sum+=p[3]*qty;lines.push(qty+" × "+p[1]+" (SKU "+sku+") · "+money(p[3]*qty))}
+ document.getElementById("selected-count").textContent=String(count);
+ document.getElementById("selection").value=count?("SIMULACIÓN — NO ES UN PEDIDO\n"+lines.join("\n")+"\nTOTAL REFERENCIAL: "+money(sum)+"\nSin pago ni reserva."):"";
+}
+function draw(){
+ cards.replaceChildren();
+ const term=search.value.trim().toLocaleLowerCase("es");
+ const out=data.filter(p=>(!cat.value||p[2]===cat.value)&&(!photo.value||(photo.value==="prioridad"&&p[7]===true)||(photo.value==="referencia"&&p[7]===false))&&(!term||(p[0]+" "+p[1]).toLocaleLowerCase("es").includes(term)));
+ document.getElementById("shown").textContent=String(out.length);
+ if(!out.length){const e=document.createElement("p");e.className="empty";e.textContent="No hay resultados con estos filtros.";cards.append(e)}
+ for(const p of out){
+  const article=document.createElement("article");article.className="card";
+  const illustration=document.createElement("div");illustration.className="art";
+  const emoji=document.createElement("span");emoji.className="emoji";emoji.textContent=p[6];
+  const placeholder=document.createElement("small");placeholder.textContent="Ilustración genérica — foto pendiente";
+  illustration.append(emoji,placeholder);
+  const body=document.createElement("div");body.className="body";
+  const chip=document.createElement("span");chip.className="chip";chip.textContent=p[2];
+  const name=document.createElement("h2");name.textContent=p[1];
+  const sku=document.createElement("span");sku.className="sku";sku.textContent="SKU "+p[0];
+  const price=document.createElement("div");price.className="price";price.textContent=money(p[3]);
+  const meta=document.createElement("div");meta.className="meta";meta.textContent="Stock registrado: "+p[4]+" unid. / "+p[5]+" locales (corte, no disponibilidad actual)";
+  const image=document.createElement("div");image.className="meta";image.textContent=p[7]?"Fotografía propia prioritaria":"Referencia visual pendiente de licencia";
+  const add=document.createElement("button");add.type="button";add.textContent="Añadir a prueba";
+  add.addEventListener("click",()=>{selected.set(p[0],(selected.get(p[0])||0)+1);renderSummary();document.getElementById("request-title").scrollIntoView({block:"nearest",behavior:"smooth"})});
+  body.append(chip,name,sku,price,meta,image,add);
+  article.append(illustration,body);cards.append(article);
+ }
+}
+search.addEventListener("input",draw);cat.addEventListener("change",draw);photo.addEventListener("change",draw);
+document.getElementById("reset").addEventListener("click",()=>{search.value="";cat.value="";photo.value="";draw();search.focus()});
+document.getElementById("clear-selection").addEventListener("click",()=>{selected.clear();renderSummary();document.getElementById("copy-feedback").textContent="Selección de prueba vaciada."});
+document.getElementById("copy").addEventListener("click",async()=>{
+ const t=document.getElementById("selection");
+ if(!t.value){document.getElementById("copy-feedback").textContent="Primero añade al menos un producto de prueba.";return}
+ try{await navigator.clipboard.writeText(t.value);document.getElementById("copy-feedback").textContent="Resumen copiado."}
+ catch(e){t.focus();t.select();document.getElementById("copy-feedback").textContent="Seleccionado. Utiliza Copiar en tu dispositivo."}
+});
+draw();renderSummary();
+</script></body></html>
