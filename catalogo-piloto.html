@@ -50,6 +50,12 @@ main{max-width:1160px;margin:auto;padding:32px 22px 65px}h1{font-size:clamp(30px
 <article class="product" data-group="venta-libre" data-search="bienestar artículos sanitarios autorizados"><div class="illustration" aria-hidden="true"><span>🌿</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Bienestar y autocuidado</h2><p>Consulta qué opciones verificadas tenemos disponibles para tu necesidad.</p><a class="btn" data-consult="Bienestar y autocuidado" href="#">Consultar disponibilidad</a></div></article>
 </section>
 <p id="empty" class="empty" hidden>No encontramos esa categoría. Prueba otro término o consulta directamente.</p>
+<section id="approved-section" aria-labelledby="approved-title" hidden>
+<h2 id="approved-title">Productos verificados</h2>
+<p>Solo mostramos fichas con datos revisados. La atención de pedidos se confirma siempre con la botica.</p>
+<div class="cards" id="approved-products"></div>
+</section>
+<p id="product-status" role="status">Estamos preparando las fichas individuales de productos autorizados.</p>
 <section class="bottom" aria-labelledby="direct-title"><h2 id="direct-title">¿Buscas un producto específico?</h2><p>Indícanos el nombre que buscas. La botica confirmará disponibilidad, presentación, condición de venta y precio antes de atender cualquier pedido. No incluyas datos de salud personales.</p><form class="form" id="query-form"><input type="text" id="product-query" maxlength="100" required placeholder="Nombre del producto que deseas consultar" aria-label="Producto a consultar"><button class="btn" type="submit">Consultar por WhatsApp</button></form></section>
 </main>
 <footer>Boticas del Dr. Juan · IDEAFAB S.A. · Catálogo piloto informativo, sin venta online ni cobro habilitados.</footer>
@@ -66,7 +72,32 @@ document.getElementById("clear").addEventListener("click",()=>{q.value="";filter
 function toWA(msg){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer")}
 document.querySelectorAll("[data-consult]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toWA("Hola, deseo consultar disponibilidad de la categoría: "+a.dataset.consult+". Entiendo que la botica confirmará la condición de venta, el stock y el precio.")}));
 document.getElementById("query-form").addEventListener("submit",e=>{e.preventDefault();const name=document.getElementById("product-query").value.trim();if(!name)return;toWA("Hola Boticas del Dr. Juan, deseo consultar por: "+name+". Por favor, confirmen disponibilidad, presentación, condición de venta y precio.");});
+async function loadApprovedProducts(){
+ try{
+  const response=await fetch("/catalogo-productos.json",{cache:"no-store"});
+  if(!response.ok)throw new Error("Feed no disponible");
+  const data=await response.json();
+  if(data.schema_version!=="1.0"||data.publication_mode!=="inquiry_only"||!Array.isArray(data.products))throw new Error("Feed no verificado");
+  const target=document.getElementById("approved-products");
+  const safe=data.products.filter(p=>p&&p.approved_for_publication===true&&p.regulatory_review==="VERIFIED"&&p.price_review==="VERIFIED"&&p.image_license==="VERIFIED"&&p.stock_review==="VERIFIED"&&/^https:\/\//.test(p.image_url||"")&&Number.isFinite(Number(p.price_pen))&&Number(p.price_pen)>0&&/^[0-9A-Za-z_-]{2,30}$/.test(String(p.sku||"")));
+  safe.forEach(p=>{
+   const article=document.createElement("article");article.className="product";
+   const pic=document.createElement("div");pic.className="illustration";
+   const img=document.createElement("img");img.src=p.image_url;img.alt="Envase de "+String(p.name||"producto");img.loading="lazy";img.width=130;img.height=125;img.style.cssText="max-width:95%;max-height:135px;object-fit:contain";pic.append(img);
+   const body=document.createElement("div");body.className="body";
+   const badge=document.createElement("span");badge.className="status";badge.textContent="Verificado para consulta";
+   const name=document.createElement("h2");name.textContent=String(p.name||"Producto"); 
+   const detail=document.createElement("p");detail.textContent=String(p.presentation||"")+" · Código "+String(p.sku);
+   const price=document.createElement("p");price.textContent="Precio referencial: S/ "+Number(p.price_pen).toFixed(2)+" (confirmar con botica)";
+   const link=document.createElement("a");link.className="btn";link.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hola, deseo consultar disponibilidad y precio del SKU "+p.sku+", "+p.name+".");link.rel="noopener noreferrer";link.target="_blank";link.textContent="Consultar por WhatsApp";
+   body.append(badge,name,detail,price,link);article.append(pic,body);target.append(article);
+  });
+  document.getElementById("approved-section").hidden=safe.length===0;
+  document.getElementById("product-status").textContent=safe.length?safe.length+" productos verificados para consultas.":"Aún no hay fichas individuales verificadas. Puedes consultar por las categorías.";
+ }catch(e){document.getElementById("product-status").textContent="Las fichas individuales están en preparación. La consulta por categoría sigue disponible.";}
+}
 draw();
+loadApprovedProducts();
 })();
 </script>
 </body></html>
