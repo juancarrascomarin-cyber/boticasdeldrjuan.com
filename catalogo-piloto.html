@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#8d0b13">
+<title>Catálogo piloto | Productos sin receta | Boticas del Dr. Juan</title>
+<meta name="description" content="Explora categorías de venta libre y consulta su disponibilidad en Boticas del Dr. Juan. Catálogo piloto sin compra en línea.">
+<link rel="canonical" href="https://boticasdeldrjuan.com/catalogo-piloto.html">
+<style>
+:root{--vino:#850c17;--rojo:#b61821;--oro:#efc44d;--fondo:#fffaf1;--texto:#352226;--sec:#725f63;--linea:#eeded2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--texto);line-height:1.5}
+header{background:#fff;border-bottom:3px solid var(--oro);box-shadow:0 3px 20px #4e151115}header .inner{max-width:1160px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{max-width:210px;width:38vw;height:auto}.back{color:var(--vino);font-weight:700;text-decoration:none}
+main{max-width:1160px;margin:auto;padding:32px 22px 65px}h1{font-size:clamp(30px,5vw,50px);line-height:1.12;margin:10px 0 16px;color:var(--vino)}
+.tag{display:inline-flex;background:#fff1d5;color:#74380d;border:1px solid #f3c86e;border-radius:30px;font-weight:800;font-size:.81rem;letter-spacing:.04em;padding:7px 12px}
+.lead{max-width:850px;color:#59464d;font-size:1.12rem}.notice{background:#fff;border:1px solid var(--linea);border-left:5px solid var(--oro);padding:16px 20px;border-radius:10px;margin:24px 0}
+.controls{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0 16px}.controls input{flex:1;min-width:220px;max-width:590px;border:2px solid #d8bdbc;padding:13px 16px;font:inherit;border-radius:12px}
+.controls button,.btn{font:inherit;border:0;border-radius:12px;background:var(--vino);color:#fff;padding:13px 18px;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.controls button:hover,.btn:hover{background:#a91925}.controls input:focus,.controls button:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 24px}.chips button{font:inherit;padding:9px 14px;border:1px solid #d0a8a9;border-radius:30px;background:#fff;color:var(--vino);cursor:pointer}.chips button[aria-pressed="true"]{background:var(--vino);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.product{border:1px solid var(--linea);background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px #602d1b10}
+.illustration{height:150px;background:linear-gradient(135deg,#fff3d6,#fae7da);display:flex;align-items:center;justify-content:center}
+.illustration span{font-size:4.2rem}.body{padding:22px;flex:1;display:flex;flex-direction:column}.body h2{font-size:1.15rem;color:var(--vino);margin:0 0 8px}.body p{font-size:.96rem;color:var(--sec);margin:0 0 19px}.status{font-size:.8rem;font-weight:700;color:#855012;background:#fff7df;padding:5px 10px;border-radius:7px;align-self:flex-start;margin-bottom:12px}.body .btn{margin-top:auto;font-size:.95rem}
+.bottom{margin-top:30px;background:#fff;border:1px solid var(--linea);border-radius:18px;padding:24px}.bottom h2{color:var(--vino);margin:0 0 8px}.bottom p{color:var(--sec)}.form{display:flex;flex-wrap:wrap;gap:12px}.form input{flex:1;min-width:220px;padding:13px 15px;border:1px solid #bb9a97;border-radius:10px;font:inherit}
+.empty{padding:35px 10px;text-align:center;color:var(--sec)}footer{padding:35px;text-align:center;color:#78636b;font-size:.9rem}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.cards{grid-template-columns:1fr}header .inner{flex-wrap:wrap}main{padding:26px 16px 50px}.controls input{max-width:100%}}
+</style>
+</head><body>
+<header><div class="inner"><a href="/" aria-label="Volver a inicio"><img class="logo" src="/logo-dr-juan.webp" alt="Boticas del Dr. Juan"></a><a class="back" href="/">← Volver a la tienda</a></div></header>
+<main>
+<div class="tag">CATÁLOGO PILOTO · NAVEGACIÓN EN PRUEBAS</div>
+<h1>Productos sin receta médica</h1>
+<p class="lead">Estamos habilitando progresivamente categorías de venta libre y cuidado personal. Explora las categorías y consulta a nuestro equipo la disponibilidad de un producto específico.</p>
+<div class="notice" role="note"><strong>Importante:</strong> esta página presenta <strong>categorías, no fichas de productos autorizados ni ofertas</strong>. No muestra precios ni permite comprar. Antes de ofrecer un medicamento concreto verificamos su registro sanitario, condición de venta y presentación. Las consultas se atienden por una botica autorizada.</div>
+<div class="controls"><input id="search" type="search" maxlength="80" placeholder="Buscar una categoría" aria-label="Buscar categorías"><button type="button" id="clear">Limpiar</button></div>
+<div class="chips" aria-label="Filtrar categorías">
+<button type="button" data-filter="todos" aria-pressed="true">Todas</button>
+<button type="button" data-filter="cuidado">Cuidado personal</button>
+<button type="button" data-filter="botiquin">Botiquín</button>
+<button type="button" data-filter="venta-libre">Venta libre</button>
+</div>
+<p id="count" aria-live="polite">6 categorías disponibles para consulta</p>
+<section class="cards" id="cards" aria-label="Categorías del catálogo">
+<article class="product" data-group="cuidado" data-search="higiene personal jabones limpieza cuerpo"><div class="illustration" aria-hidden="true"><span>🧼</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Higiene personal</h2><p>Consulta artículos de higiene disponibles en nuestras boticas.</p><a class="btn" data-consult="Higiene personal" href="#">Consultar disponibilidad</a></div></article>
+<article class="product" data-group="cuidado" data-search="cuidado oral dental cepillos higiene bucal"><div class="illustration" aria-hidden="true"><span>🪥</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Higiene bucal</h2><p>Consulta productos de cuidado e higiene bucodental.</p><a class="btn" data-consult="Higiene bucal" href="#">Consultar disponibilidad</a></div></article>
+<article class="product" data-group="botiquin" data-search="botiquin cuidado curacion hogar material de primeros auxilios"><div class="illustration" aria-hidden="true"><span>🩹</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Cuidado y botiquín</h2><p>Consulta artículos para el botiquín del hogar, sujetos a su clasificación sanitaria.</p><a class="btn" data-consult="Cuidado y botiquín" href="#">Consultar disponibilidad</a></div></article>
+<article class="product" data-group="cuidado" data-search="cuidado de piel higiene corporal cosmética"><div class="illustration" aria-hidden="true"><span>🧴</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Cuidado de la piel</h2><p>Consulta artículos de cuidado personal y cosmética según disponibilidad.</p><a class="btn" data-consult="Cuidado de la piel" href="#">Consultar disponibilidad</a></div></article>
+<article class="product" data-group="venta-libre" data-search="medicamentos sin receta venta libre medicamentos otc botica"><div class="illustration" aria-hidden="true"><span>💊</span></div><div class="body"><span class="status">Medicamentos sujetos a validación</span><h2>Medicamentos sin receta</h2><p>Solo se incorporarán medicamentos cuya condición de venta libre y registro sanitario estén confirmados.</p><a class="btn" data-consult="Medicamentos sin receta" href="#">Consultar con botica</a></div></article>
+<article class="product" data-group="venta-libre" data-search="bienestar artículos sanitarios autorizados"><div class="illustration" aria-hidden="true"><span>🌿</span></div><div class="body"><span class="status">Categoría en preparación</span><h2>Bienestar y autocuidado</h2><p>Consulta qué opciones verificadas tenemos disponibles para tu necesidad.</p><a class="btn" data-consult="Bienestar y autocuidado" href="#">Consultar disponibilidad</a></div></article>
+</section>
+<p id="empty" class="empty" hidden>No encontramos esa categoría. Prueba otro término o consulta directamente.</p>
+<section class="bottom" aria-labelledby="direct-title"><h2 id="direct-title">¿Buscas un producto específico?</h2><p>Indícanos el nombre que buscas. La botica confirmará disponibilidad, presentación, condición de venta y precio antes de atender cualquier pedido. No incluyas datos de salud personales.</p><form class="form" id="query-form"><input type="text" id="product-query" maxlength="100" required placeholder="Nombre del producto que deseas consultar" aria-label="Producto a consultar"><button class="btn" type="submit">Consultar por WhatsApp</button></form></section>
+</main>
+<footer>Boticas del Dr. Juan · IDEAFAB S.A. · Catálogo piloto informativo, sin venta online ni cobro habilitados.</footer>
+<script>
+(function(){
+"use strict";
+const WA="51990993246";
+const q=document.getElementById("search"),cards=[...document.querySelectorAll(".product")],buttons=[...document.querySelectorAll("[data-filter]")],count=document.getElementById("count"),empty=document.getElementById("empty");
+let filter="todos";
+function draw(){const term=q.value.trim().toLocaleLowerCase("es-PE");let n=0;cards.forEach(card=>{const shown=(filter==="todos"||card.dataset.group===filter)&&(!term||(card.dataset.search+" "+card.querySelector("h2").textContent).toLocaleLowerCase("es-PE").includes(term));card.hidden=!shown;if(shown)n++});count.textContent=n+" categorías disponibles para consulta";empty.hidden=n!==0;}
+buttons.forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;buttons.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));draw()}));
+q.addEventListener("input",draw);
+document.getElementById("clear").addEventListener("click",()=>{q.value="";filter="todos";buttons.forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.filter==="todos")));draw();q.focus()});
+function toWA(msg){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer")}
+document.querySelectorAll("[data-consult]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();toWA("Hola, deseo consultar disponibilidad de la categoría: "+a.dataset.consult+". Entiendo que la botica confirmará la condición de venta, el stock y el precio.")}));
+document.getElementById("query-form").addEventListener("submit",e=>{e.preventDefault();const name=document.getElementById("product-query").value.trim();if(!name)return;toWA("Hola Boticas del Dr. Juan, deseo consultar por: "+name+". Por favor, confirmen disponibilidad, presentación, condición de venta y precio.");});
+draw();
+})();
+</script>
+</body></html>
