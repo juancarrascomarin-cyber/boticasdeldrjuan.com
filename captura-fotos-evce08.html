@@ -1,0 +1,146 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+<title>Captura de fotografías por SKU | Boticas del Dr. Juan</title>
+<meta name="theme-color" content="#821521"><meta name="description" content="Herramienta interna de captura de fotos de productos. Procesamiento local, sin envío de imágenes.">
+<style>
+:root{--vino:#861521;--oro:#d6aa31;--t:#2d2225;--m:#71656a;--f:#fff9f2;--b:#e8d8d4;--g:#196544}
+*{box-sizing:border-box}body{margin:0;background:var(--f);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--t);line-height:1.48}header{background:linear-gradient(120deg,#6b1020,#981b27);color:#fff;border-bottom:4px solid var(--oro)}
+.wrap{max-width:1020px;margin:auto;padding:0 19px}.head{display:flex;align-items:center;gap:16px;padding:21px 0}.head img{width:90px;height:70px;object-fit:contain;background:#fff;border-radius:12px;padding:8px}.head h1{font-size:clamp(1.3rem,4.7vw,2rem);margin:0}.head p{margin:3px 0 0;opacity:.86;font-size:.9rem}
+main{padding:25px 0 55px}.notice{padding:16px 19px;background:#fff4d1;border-left:5px solid var(--oro);border-radius:10px;font-size:.92rem;margin-bottom:24px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:17px}.box{border:1px solid var(--b);background:#fff;border-radius:16px;padding:19px;box-shadow:0 9px 26px #7433220d}
+h2{color:var(--vino);font-size:1.12rem;margin:0 0 11px}p{margin:6px 0 13px}small,.muted{color:var(--m)}label{display:block;margin:12px 0 6px;font-weight:700;font-size:.91rem}select,input,button{font:inherit}select,input[type=text]{width:100%;padding:12px;border:1px solid #cbb6b0;border-radius:10px;background:#fff;min-height:45px}
+select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--oro);outline-offset:2px}button,.button{cursor:pointer;border:0;border-radius:11px;min-height:45px;padding:12px 15px;background:var(--vino);color:#fff;font-weight:750}
+button.secondary{background:#f4e7e2;color:var(--vino);border:1px solid #e3c8bf}button[disabled]{opacity:.45;cursor:not-allowed}
+.pill{font-size:.79rem;font-weight:750;border-radius:99px;padding:5px 10px;background:#f5e8e7;color:#731c24;display:inline-block}
+.pill.priority{background:#fff1bd;color:#754507}.grid-photos{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:14px}
+.photo{border:1px dashed #c9b5ad;border-radius:13px;padding:12px;background:#fffcf9}
+.photo h3{font-size:.92rem;margin:0 0 8px}
+.photo input{width:100%;max-width:100%;font-size:.76rem}
+.preview{width:100%;height:160px;object-fit:contain;border-radius:10px;background:#f6f0eb;margin:10px 0 5px}
+.photo-status{font-size:.75rem;color:var(--m)}
+.row{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0 6px}
+.row button{flex:1;min-width:160px}#message{min-height:24px;font-weight:700;color:var(--vino);font-size:.9rem}
+#sku-info{padding:10px 12px;border-radius:11px;background:#f9eee9;margin:12px 0}
+ol{padding-left:23px}li{margin:8px 0}a{color:var(--vino)}
+footer{text-align:center;color:var(--m);padding:20px;font-size:.85rem}
+@media(max-width:760px){.cards{grid-template-columns:1fr}}
+@media(max-width:440px){.grid-photos{grid-template-columns:1fr}.photo .preview{height:175px}.wrap{padding:0 14px}.box{padding:15px}}
+</style></head>
+<body><header><div class="wrap head"><img src="/logo-dr-juan.webp" alt="Boticas del Dr. Juan"><div><h1>Captura fotográfica por SKU</h1><p>EVCE-08 · Herramienta interna · Solo para productos físicos propios</p></div></div></header>
+<main class="wrap">
+<div class="notice"><strong>Fotografía directa desde el celular.</strong> Las imágenes se procesan <strong>en tu dispositivo</strong>; no se suben a la web ni quedan almacenadas. Descárgalas o compártelas antes de cerrar la página. Fotografiar únicamente productos propios, con envase y presentación verificables. Evita documentos de personas o datos privados.</div>
+<div class="cards">
+<section class="box" aria-labelledby="one"><h2 id="one">1. Elige el producto</h2>
+<label for="filter">Filtrar lista</label><select id="filter"><option value="priority">13 fotos prioritarias</option><option value="all">Los 21 SKU</option><option value="other">8 con referencia por revisar</option></select>
+<label for="sku">SKU y presentación exacta</label><select id="sku"></select>
+<div id="sku-info" role="status">Selecciona un producto para comenzar.</div>
+<label for="notes">Observación (opcional)</label><input id="notes" type="text" maxlength="150" placeholder="Ej.: envase renovado, variante, NSO visible">
+<p class="muted" style="font-size:.83rem">Fotografía el frente y el reverso del mismo SKU. En el reverso debe apreciarse, cuando corresponda, la NSO/registro, el titular y el código de barras.</p>
+</section>
+<section class="box" aria-labelledby="two"><h2 id="two">2. Captura o selecciona imágenes</h2>
+<div class="grid-photos">
+<div class="photo"><h3>Frontal del envase</h3><input id="front" type="file" accept="image/*" capture="environment" aria-label="Fotografía frontal"><img class="preview" id="front-preview" alt="Vista previa frontal" hidden><div class="photo-status" id="front-status">Sin imagen seleccionada</div></div>
+<div class="photo"><h3>Posterior / rotulado</h3><input id="back" type="file" accept="image/*" capture="environment" aria-label="Fotografía posterior"><img class="preview" id="back-preview" alt="Vista previa posterior" hidden><div class="photo-status" id="back-status">Sin imagen seleccionada</div></div>
+</div>
+<div class="row"><button id="download" type="button" disabled>Descargar fotos</button><button class="secondary" id="share" type="button" disabled>Compartir desde celular</button></div>
+<div id="message" role="status" aria-live="polite"></div>
+</section>
+</div>
+<section class="box" style="margin-top:18px" aria-labelledby="three"><h2 id="three">3. Entrega de fotografías</h2>
+<ol>
+<li>Comprueba que el producto sea el SKU y la presentación seleccionados. Que se vea completa la etiqueta.</li>
+<li>Pulsa <strong>Descargar fotos</strong> para guardar los archivos optimizados <code>SKU_FRONTAL.webp</code> y <code>SKU_POSTERIOR.webp</code>. El formato puede ser JPG si el navegador no admite WebP.</li>
+<li>También puedes pulsar <strong>Compartir desde celular</strong> y elegir WhatsApp, correo u otra aplicación compatible. Elige a tu encargado autorizado y adjunta ambos archivos.</li>
+<li>Incluye el SKU y cualquier observación al enviarlos. La aprobación comercial y sanitaria de la ficha se hará por separado.</li>
+</ol>
+<p class="muted" style="font-size:.85rem">La herramienta reduce imágenes a un máximo de 1600 píxeles y elimina los metadatos de cámara al volver a generarlas. No emplea ningún servicio de subida. El navegador puede requerir permiso para acceder a la cámara.</p></section>
+</main>
+<footer>Boticas del Dr. Juan · IDEAFAB S.A. · Fotos pendientes de validación antes de su publicación.</footer>
+<script>
+"use strict";
+const products=[["88935","BELNATUR jabón glicerina aloe vera 90 g","Jabones",1],["94299","DOVE jabón Baby sensible 75 g","Jabones",0],["00003510","PROTEX jabón Men Active Sports 110 g","Jabones",0],["00000295","REXONA jabón Fresh Antibacterial 84 g","Jabones",1],["76944","CAMAY jabón Rosas Francesas 125 g","Jabones",0],["00002644","BEIA champú quinua y ácido hialurónico 500 ml","Champú",1],["99028","BEIA champú keratina y argán 500 ml","Champú",0],["00001078","AVENGERS pasta dental chicle 50 g","Cuidado bucal",1],["95387","AVENGERS pasta dental chicle 75 ml","Cuidado bucal",1],["00001079","PEPPA PIG pasta dental chicle 50 g","Cuidado bucal",1],["00003285","PLIM PLIM pasta dental chicle 50 g","Cuidado bucal",1],["00003373","SENSODYNE cepillo multiprotección medio","Cuidado bucal",0],["00003375","SENSODYNE cepillo limpieza profunda suave","Cuidado bucal",1],["88020","NOSOTRAS protectores diarios normal desodorante 15 und","Higiene femenina",0],["92524","ISANA talco para pies mentolado 60 g","Cuidado corporal",0],["94382","ISANA talco para pies mentolado 240 g","Cuidado corporal",1],["90188","ISANA talco para pies Triple Acción 60 g","Cuidado corporal",1],["69989","LISTERINE enjuague Coolmint Zero 500 ml","Cuidado bucal",0],["96231","STERILAB algodón bolsa 25 g","Botiquín",1],["96639","COPPON algodón hidrófilo 100 g","Botiquín",1],["00002712","Cepillo dental silicona cabezal en U","Cuidado bucal",1]];
+const skuEl=document.getElementById("sku"),filterEl=document.getElementById("filter"),statusEl=document.getElementById("message");
+const state={front:null,back:null};
+function clearPhotos(){
+ for(const side of ["front","back"]){
+  state[side]=null;const inp=document.getElementById(side);inp.value="";
+  const preview=document.getElementById(side+"-preview");preview.removeAttribute("src");preview.hidden=true;
+  document.getElementById(side+"-status").textContent="Sin imagen seleccionada";
+ }
+ updateButtons();statusEl.textContent="";
+}
+function fillSku(){
+ const selected=skuEl.value;
+ skuEl.replaceChildren();
+ let options=products.filter(p=>filterEl.value==="all"||(filterEl.value==="priority"?p[3]===1:p[3]===0));
+ for(const p of options){
+  const o=document.createElement("option");o.value=p[0];o.textContent=p[0]+" · "+p[1];skuEl.append(o)
+ }
+ if(options.some(p=>p[0]===selected))skuEl.value=selected;
+ changeSku();
+}
+function changeSku(){
+ const p=products.find(p=>p[0]===skuEl.value);
+ const box=document.getElementById("sku-info");box.replaceChildren();
+ if(p){
+  const name=document.createElement("strong");name.textContent=p[1];
+  const line=document.createElement("div");line.style.marginTop="6px";line.textContent=p[3]?"PRIORIDAD: foto propia pendiente":"Existe referencia web, pero falta autorización o comprobar coincidencia exacta";
+  box.append(name,line)
+ }
+ clearPhotos();
+}
+function updateButtons(){
+ const ready=!!(state.front||state.back);
+ document.getElementById("download").disabled=!ready;
+ document.getElementById("share").disabled=!ready;
+}
+function renderPhoto(file,side){
+ if(!file||!file.type.startsWith("image/")){statusEl.textContent="Selecciona un archivo de imagen válido.";return}
+ if(file.size>30000000){statusEl.textContent="Archivo superior a 30 MB. Toma otra foto.";return}
+ const img=new Image();const temp=URL.createObjectURL(file);
+ img.onload=()=>{
+  const w=img.naturalWidth,h=img.naturalHeight;
+  if(!w||!h){statusEl.textContent="No fue posible leer la imagen.";URL.revokeObjectURL(temp);return}
+  const ratio=Math.min(1,1600/Math.max(w,h));
+  const cv=document.createElement("canvas");cv.width=Math.round(w*ratio);cv.height=Math.round(h*ratio);
+  cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+  cv.toBlob(blob=>{
+   if(!blob){statusEl.textContent="No se pudo generar la foto.";URL.revokeObjectURL(temp);return}
+   const ext=blob.type==="image/webp"?"webp":"jpg";
+   const old=state[side];if(old?.previewUrl)URL.revokeObjectURL(old.previewUrl);
+   const previewUrl=URL.createObjectURL(blob);
+   state[side]={blob,ext,previewUrl,width:cv.width,height:cv.height};
+   const preview=document.getElementById(side+"-preview");preview.src=previewUrl;preview.hidden=false;
+   document.getElementById(side+"-status").textContent=cv.width+" × "+cv.height+" px · "+Math.round(blob.size/1024)+" KB";
+   updateButtons();statusEl.textContent="Foto preparada en tu dispositivo.";
+   URL.revokeObjectURL(temp);
+  },"image/webp",0.86);
+ };
+ img.onerror=()=>{URL.revokeObjectURL(temp);statusEl.textContent="El dispositivo no pudo abrir esa imagen."};
+ img.src=temp;
+}
+for(const side of ["front","back"]){
+ document.getElementById(side).addEventListener("change",e=>{const file=e.target.files?.[0];if(file)renderPhoto(file,side)});
+}
+function files(){
+ const date=new Date();const dateStr=date.getFullYear().toString()+String(date.getMonth()+1).padStart(2,"0")+String(date.getDate()).padStart(2,"0");
+ return ["front","back"].filter(side=>state[side]).map(side=>{
+  const item=state[side];const label=side==="front"?"FRONTAL":"POSTERIOR";const filename=skuEl.value+"_"+label+"_"+dateStr+"."+item.ext;
+  return new File([item.blob],filename,{type:item.blob.type||"image/jpeg"});
+ });
+}
+document.getElementById("download").addEventListener("click",()=>{
+ const fs=files();if(!fs.length)return;
+ fs.forEach((file,i)=>{const u=URL.createObjectURL(file);const a=document.createElement("a");a.href=u;a.download=file.name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),20000)});
+ statusEl.textContent="Archivos preparados para descarga. Comprueba la carpeta Descargas de tu teléfono.";
+});
+document.getElementById("share").addEventListener("click",async()=>{
+ const fs=files();if(!fs.length)return;
+ if(navigator.canShare&&navigator.canShare({files:fs})&&navigator.share){
+  try{await navigator.share({files:fs,title:"Fotografías de producto "+skuEl.value,text:"SKU "+skuEl.value+". "+document.getElementById("notes").value.trim()});statusEl.textContent="Se abrió el menú de compartir."}
+  catch(e){statusEl.textContent=e.name==="AbortError"?"Compartir cancelado.":"No se pudo compartir. Usa Descargar fotos."}
+ }else statusEl.textContent="Tu navegador no admite compartir archivos. Utiliza Descargar fotos.";
+});
+filterEl.addEventListener("change",fillSku);skuEl.addEventListener("change",changeSku);fillSku();
+</script></body></html>
