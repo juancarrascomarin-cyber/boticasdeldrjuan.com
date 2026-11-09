@@ -35,6 +35,8 @@ button.secondary{background:#eee2df;color:var(--vino)}
 .card{background:#fff;border:1px solid var(--borde);border-radius:17px;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column}
 .art{height:152px;background:linear-gradient(135deg,#fff7e3,#f7ebe8);display:flex;align-items:center;justify-content:center;position:relative}
 .art .emoji{font-size:65px;filter:saturate(.65)}
+.art .product-image{display:block;max-width:100%;max-height:145px;width:100%;height:145px;object-fit:contain;mix-blend-mode:multiply;padding:8px}
+.art small{z-index:1}.photo-credit{font-size:.72rem;color:var(--secundario)}
 .art small{position:absolute;bottom:9px;left:9px;right:9px;background:#fffdf7e8;color:#6c5456;border-radius:6px;text-align:center;font-size:.72rem;padding:4px}
 .body{padding:17px;display:flex;flex-direction:column;flex:1;gap:9px}
 .chip{display:inline-block;background:#fcebdd;color:var(--vino);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:800;align-self:flex-start}
@@ -58,7 +60,7 @@ footer{padding:12px 0 40px;color:#756268;text-align:center;font-size:.87rem}
 <body>
 <header><div class="container brand"><img src="/logo-dr-juan.webp" alt="Logo de Boticas del Dr. Juan"><div><div class="subtitle">EVCE-08 · LABORATORIO DE EXPERIENCIA DIGITAL</div><h1>Prueba del catálogo de 21 productos</h1><div class="subtitle">Boticas del Dr. Juan · versión experimental · 7 de noviembre de 2026</div></div></div></header>
 <main class="container">
-<div class="banner" role="note"><strong>SIMULACIÓN — NO ES UNA TIENDA NI UNA OFERTA DE VENTA.</strong> Los nombres y códigos provienen de ADESYNET; precios y cantidades son referencias de un corte, no disponibilidad en tiempo real. Fotografías genéricas de categoría, no envases reales. Nada de esta página permite efectuar pagos, reservar productos ni enviar pedidos. Las fichas no están aprobadas para comercialización online.</div>
+<div class="banner" role="note"><strong>SIMULACIÓN VISUAL — NO ES UNA TIENDA NI UNA OFERTA DE VENTA.</strong> Esta versión incorpora fotografías web externas de algunas presentaciones para probar el aspecto real de la tienda. Son referencias visuales sin licencia comercial verificada; no se han copiado ni alojado en nuestros servidores y no están aprobadas para la tienda definitiva. Los demás SKU muestran íconos. Los precios y cantidades son referencias de un corte de ADESYNET, no disponibilidad en tiempo real. No se procesan pagos, reservas ni pedidos.</div>
 <p style="margin:12px 0 19px"><a href="/captura-fotos-evce08.html" style="display:inline-block;background:#fff;color:#861521;border:2px solid #d6aa31;padding:12px 16px;border-radius:11px;font-weight:800;text-decoration:none">📷 Abrir captura de fotos por SKU</a> <small style="display:block;margin-top:6px">Las fotos se procesan en tu celular; no se envían automáticamente.</small></p>
 <div class="controls">
 <input id="search" type="search" placeholder="Buscar nombre o SKU…" aria-label="Buscar productos">
@@ -66,7 +68,7 @@ footer{padding:12px 0 40px;color:#756268;text-align:center;font-size:.87rem}
 <select id="photo" aria-label="Estado de fotografía"><option value="">Todas las fotografías</option><option value="prioridad">Foto propia prioritaria</option><option value="referencia">Referencia web por verificar</option></select>
 <button id="reset" type="button" class="secondary">Limpiar</button>
 </div>
-<div class="stats"><div class="stat"><strong id="shown">21</strong><span>Fichas mostradas</span></div><div class="stat"><strong>21</strong><span>SKU de prueba</span></div><div class="stat"><strong>13</strong><span>Fotos propias prioritarias</span></div><div class="stat"><strong id="selected-count">0</strong><span>Unidades en simulación</span></div></div>
+<div class="stats"><div class="stat"><strong id="shown">21</strong><span>Fichas mostradas</span></div><div class="stat"><strong>21</strong><span>SKU de prueba</span></div><div class="stat"><strong>8</strong><span>Referencias fotográficas web</span></div><div class="stat"><strong id="selected-count">0</strong><span>Unidades en simulación</span></div></div>
 <div id="cards" class="cards" aria-live="polite"></div>
 <section class="panel" aria-labelledby="request-title">
 <h2 id="request-title">Simulador de interés en productos</h2>
@@ -84,6 +86,7 @@ const selected=new Map();
 const cats=[...new Set(data.map(x=>x[2]))].sort();
 const cat=document.getElementById("cat");
 cats.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;cat.append(o)});
+const imageRefs={"69989":{"url":"https://d2o812a6k13pkp.cloudfront.net/Productos/40323166_01.jpg","page":"https://www.frecuento.com/enjuague-bucal-listerine-cool-mint-zero-500ml/901201/","label":"Listerine Cool Mint Zero 500 ml"},"76944":{"url":"https://dcuk1cxrnzjkh.cloudfront.net/imagesproducto/029702L.jpg","page":"https://www.mifarma.com.pe/producto/jabon-con-glicerina-camay-rosas-francesas/029702","label":"Camay Rosas Francesas 125 g"},"88020":{"url":"https://boticasperu.pe/media/catalog/product/cache/eebfcecb9382e8d5ccf71e8b2c8cbd30/1/8/18748.jpg","page":"https://boticasperu.pe/nosotras-protectores-diarios-desodorante-bolsa-15-un.html","label":"Nosotras protectores 15 unidades"},"90188":{"url":"https://metroio.vtexassets.com/arquivos/ids/253719-800-auto?aspect=true&height=auto&v=638176269776500000&width=800","page":"https://www.metro.pe/talco-para-pies-isana-triple-accion-contenido-60g-2/p","label":"Isana Triple Acción 60 g"},"94299":{"url":"https://coopidrogas.vtexassets.com/arquivos/ids/36953624-800-800?aspect=true&height=800&v=638720346532800000&width=800","page":"https://www.farmaexpress.com/jabon-dove-baby-humectacion-sensible-barra-75-g-200035824/p","label":"Baby Dove Humectación Sensible 75 g"},"99028":{"url":"https://farmaciauniversalpe.vtexassets.com/arquivos/ids/159587/18774_1.jpg?v=638591217108530000","page":"https://www.farmaciauniversal.com/beia-natural-keratina-y-aceite-de-argan-shampoo-frasco-500-ml/p","label":"BEIA Keratina y Argán Shampoo 500 ml"},"00003510":{"url":"https://vegaperu.vtexassets.com/arquivos/ids/166246/62720.jpg?v=638443073639670000","page":"https://www.vega.pe/jabon-en-barra-protex-men-sport-barra-110gr-62720/p","label":"Protex Men Active Sports 110 g"},"00000295":{"url":"https://www.lagranbodega.com.pe/public/images/products/841475.jpg","page":"https://www.lagranbodega.com.pe/tienda/producto/jab%C3%B3n-rexona-antibacterial-fresh-84-gr","label":"Rexona Antibacterial Fresh 84 g"}};
 const cards=document.getElementById("cards");
 const search=document.getElementById("search");
 const photo=document.getElementById("photo");
@@ -103,19 +106,25 @@ function draw(){
  for(const p of out){
   const article=document.createElement("article");article.className="card";
   const illustration=document.createElement("div");illustration.className="art";
-  const emoji=document.createElement("span");emoji.className="emoji";emoji.textContent=p[6];
-  const placeholder=document.createElement("small");placeholder.textContent="Ilustración genérica — foto pendiente";
-  illustration.append(emoji,placeholder);
+  const ref=imageRefs[p[0]];
+  if(ref){
+   const img=document.createElement("img");img.className="product-image";img.src=ref.url;img.alt="Fotografía web de referencia: "+ref.label;img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
+   img.onerror=()=>{img.remove();const fallback=document.createElement("span");fallback.className="emoji";fallback.textContent=p[6];illustration.prepend(fallback);};
+   const attribution=document.createElement("small");attribution.textContent="Imagen web · demo sin licencia";illustration.append(img,attribution);
+  }else{
+   const emoji=document.createElement("span");emoji.className="emoji";emoji.textContent=p[6];const placeholder=document.createElement("small");placeholder.textContent="Foto web sin coincidencia verificada";illustration.append(emoji,placeholder);
+  }
   const body=document.createElement("div");body.className="body";
   const chip=document.createElement("span");chip.className="chip";chip.textContent=p[2];
   const name=document.createElement("h2");name.textContent=p[1];
   const sku=document.createElement("span");sku.className="sku";sku.textContent="SKU "+p[0];
   const price=document.createElement("div");price.className="price";price.textContent=money(p[3]);
   const meta=document.createElement("div");meta.className="meta";meta.textContent="Stock registrado: "+p[4]+" unid. / "+p[5]+" locales (corte, no disponibilidad actual)";
-  const image=document.createElement("div");image.className="meta";image.textContent=p[7]?"Fotografía propia prioritaria":"Referencia visual pendiente de licencia";
+  const image=document.createElement("div");image.className="meta";image.textContent=ref?"Referencia visual de producto encontrada":"Foto exacta pendiente";
+  const credit=document.createElement("a");credit.className="photo-credit";credit.textContent=ref?"Ver fuente de la fotografía":"Buscar fotografía propia";credit.href=ref?ref.page:"/captura-fotos-evce08.html";credit.target="_blank";credit.rel="noopener noreferrer";
   const add=document.createElement("button");add.type="button";add.textContent="Añadir a prueba";
   add.addEventListener("click",()=>{selected.set(p[0],(selected.get(p[0])||0)+1);renderSummary();document.getElementById("request-title").scrollIntoView({block:"nearest",behavior:"smooth"})});
-  body.append(chip,name,sku,price,meta,image,add);
+  body.append(chip,name,sku,price,meta,image,credit,add);
   article.append(illustration,body);cards.append(article);
  }
 }
