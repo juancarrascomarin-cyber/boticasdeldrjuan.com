@@ -1,176 +1,53 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BOTICAS DEL DR JUAN | Tienda online en preparación</title>
-  <meta name="description" content="La tienda online de BOTICAS DEL DR JUAN está en preparación. Mientras tanto, visita nuestra web institucional o contáctanos por WhatsApp.">
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://boticasdeldrjuan.com/">
-  <meta name="theme-color" content="#ff5a00">
-  <style>
-    :root{
-      --orange:#ff5a00;
-      --orange2:#ff7a00;
-      --red:#c81000;
-      --deep:#7f0900;
-      --gold:#ffc400;
-      --ink:#2a1209;
-      --muted:#6d5146;
-      --cream:#fff8ef;
-      --white:#ffffff;
-      --line:#ffd6ba;
-      --shadow:0 24px 60px rgba(177,44,0,.18);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      color:var(--ink);
-      font-size:18px;
-      line-height:1.6;
-      min-height:100vh;
-      background:
-        radial-gradient(circle at 15% 10%,rgba(255,255,255,.98) 0 10%,transparent 34%),
-        radial-gradient(circle at 88% 16%,rgba(255,214,150,.68) 0 8%,transparent 28%),
-        linear-gradient(135deg,#fffdf9 0%,#fff4e7 42%,#ffe7d5 100%);
-    }
-    body:before{
-      content:"";
-      position:fixed;inset:0;pointer-events:none;z-index:-1;
-      background:linear-gradient(115deg,rgba(255,255,255,.8),transparent 36%,rgba(255,196,0,.08));
-    }
-    a{color:inherit}
-    .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:#fff;padding:12px 16px;border-radius:12px;z-index:10}
-    .wrap{width:min(1120px,calc(100% - 32px));margin:auto}
-    header{padding:24px 0 8px}
-    .brandbar{display:flex;align-items:center;justify-content:center}
-    .logo{width:min(520px,92vw);height:auto;display:block;filter:drop-shadow(0 12px 24px rgba(150,28,0,.16))}
-    main{padding:18px 0 56px}
-    .hero{
-      position:relative;overflow:hidden;
-      background:rgba(255,255,255,.95);
-      border:1px solid rgba(255,118,32,.26);
-      border-radius:30px;
-      padding:clamp(30px,6vw,72px);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-    }
-    .hero:before{
-      content:"";position:absolute;right:-100px;top:-120px;width:360px;height:360px;border-radius:50%;
-      background:radial-gradient(circle,rgba(255,196,0,.24),rgba(255,90,0,.10) 45%,transparent 72%);
-    }
-    .hero:after{
-      content:"";position:absolute;left:-120px;bottom:-180px;width:340px;height:340px;border-radius:50%;
-      background:radial-gradient(circle,rgba(255,90,0,.12),transparent 70%);
-    }
-    .content{position:relative;z-index:1}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff0df;color:var(--red);font-weight:900;padding:8px 13px;border-radius:999px;border:1px solid #ffd3ad;margin-bottom:16px}
-    .eyebrow:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(255,196,0,.15)}
-    h1{font-size:clamp(2.25rem,6vw,4.7rem);line-height:1.03;margin:.05em 0 .28em;letter-spacing:-.04em;max-width:920px;color:var(--deep)}
-    .accent{background:linear-gradient(90deg,var(--orange),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{font-size:clamp(1.08rem,2.2vw,1.38rem);max-width:800px;color:var(--muted);margin:0 0 28px}
-    .promise{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
-    .promise span{background:#fff8ef;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:700;color:#7b351e}
-    .actions{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:14px 24px;border-radius:15px;text-decoration:none;font-weight:900;border:2px solid transparent;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-    .primary{background:linear-gradient(135deg,var(--orange2),var(--red));color:#fff;box-shadow:0 12px 26px rgba(210,54,0,.24)}
-    .secondary{background:#fff;color:var(--red);border-color:#ef7d50}
-    .btn:hover{transform:translateY(-2px)}
-    .btn:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
-    .card{padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#fff,#fff9f2);box-shadow:0 10px 28px rgba(156,58,9,.07)}
-    .card h2{font-size:1.08rem;margin:0 0 8px;color:var(--deep)}
-    .card p{margin:0;color:var(--muted)}
-    .card a{font-weight:900;color:var(--red)}
-    .small{margin-top:26px;padding-top:20px;border-top:1px solid #f0dccf;color:#735f56;font-size:.95rem}
-    footer{padding:10px 0 44px;text-align:center;color:#6e5147;font-size:.92rem}
-    footer strong{color:var(--deep)}
-    @media(max-width:700px){body{font-size:17px}.grid{grid-template-columns:1fr}.actions{flex-direction:column}.btn{width:100%}.hero{border-radius:22px;padding:28px 22px}.logo{width:min(440px,96vw)}header{padding-top:18px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-      /* Enlaces sociales: sin SDK, videos incrustados ni seguimiento. */
-    .social-links-panel{box-sizing:border-box;width:100%;margin:28px auto 0;padding:30px 24px;background:#fffaf6;border:1px solid #ead7cd;border-radius:18px;text-align:center}
-    .social-links-panel h2{margin:0 0 10px;color:#651709;font-size:clamp(24px,4vw,30px);line-height:1.25;letter-spacing:normal}
-    .social-links-panel p{margin:0;color:#5f514b;font-size:17px;line-height:1.6}
-    .social-link-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:20px}
-    .social-link-button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;min-width:180px;padding:12px 22px;border:2px solid transparent;border-radius:12px;font:700 18px/1.4 Arial,Helvetica,sans-serif;color:#fff;text-decoration:none}
-    .social-link-button--facebook{background:#0866c6}
-    .social-link-button--tiktok{background:#171717}
-    .social-link-button:hover{filter:brightness(.92);text-decoration:underline;text-underline-offset:4px}
-    .social-link-button:focus-visible{outline:3px solid #651709;outline-offset:4px}
-    .social-link-button svg{display:block;width:24px;height:24px;flex:0 0 24px;fill:currentColor}
-    .social-links-panel .social-links-note{margin-top:14px;font-size:15px}
-    @media(max-width:480px){.social-links-panel{padding:24px 18px}.social-link-buttons{flex-direction:column}.social-link-button{width:100%;min-width:0}}
-    /* WhatsApp: verde distintivo y texto oscuro de alto contraste. */
-    .btn.whatsapp{gap:10px;background:#25d366;color:#073b21;border-color:#075e36;box-shadow:0 10px 24px rgba(37,211,102,.18)}
-    .btn.whatsapp:hover{background:#20c65e}
-    .btn.whatsapp:focus-visible{outline:3px solid #075e36;outline-offset:4px}
-    .whatsapp-icon{display:block;width:24px;height:24px;flex:0 0 24px}
-    .card a[href^="https://wa.me/"]{color:#075e36;text-underline-offset:3px}
-    .card a[href^="https://wa.me/"]:focus-visible{outline:3px solid #075e36;outline-offset:3px;border-radius:3px}
-</style>
-</head>
-<body>
-  <a class="skip" href="#contenido">Ir al contenido principal</a>
-
-  <header class="wrap" aria-label="Encabezado">
-    <div class="brandbar">
-      <img class="logo" src="https://raw.githubusercontent.com/juancarrascomarin-cyber/boticasimilares.com/main/logo-dr-juan.png" alt="BOTICAS DEL DR JUAN">
-    </div>
-  </header>
-
-  <main id="contenido" class="wrap">
-    <section class="hero" aria-labelledby="titulo">
-      <div class="content">
-        <span class="eyebrow">Próximamente</span>
-        <h1 id="titulo">Nuestra <span class="accent">tienda online</span> está en preparación</h1>
-        <p class="lead">Estamos preparando un espacio claro, luminoso y fácil de usar para consultar productos y comprar en línea. Mientras tanto, puedes conocer nuestros servicios, locales y canales de atención en nuestra web institucional.</p>
-
-        <div class="promise" aria-label="Principios de atención">
-          <span>Fácil de usar</span><span>Atención humana</span><span>Compra segura</span>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary" href="/catalogo-piloto.html">Explorar catálogo sin receta</a>
-          <a class="btn primary" href="https://boticasimilares.com/">Visitar web institucional</a>
-          <a class="btn secondary whatsapp" href="https://wa.me/51990993246?text=Hola%20BOTICAS%20DEL%20DR%20JUAN%2C%20deseo%20hacer%20una%20consulta." rel="noopener"><svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5-1.34A10 10 0 1 0 12 2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 7c-.6 0-1.5 1-1.5 2.2 0 2.8 3.6 6.3 6.4 6.3 1.2 0 2.1-.9 2.1-1.5 0-.3-2-1.4-2.3-1.3l-.9 1c-1.4-.5-2.6-1.7-3.1-3.1l1-.9C9.8 9.4 8.5 7 8 7Z" fill="currentColor"/></svg><span>Consultar por WhatsApp</span></a>
-        </div>
-
-        <div class="grid" aria-label="Canales de atención">
-          <div class="card">
-            <h2>Compras, cotización y delivery</h2>
-            <p>WhatsApp: <a href="https://wa.me/51990993246" rel="noopener">990 993 246</a></p>
-          </div>
-          <div class="card">
-            <h2>Orientación y acompañamiento</h2>
-            <p>WhatsApp: <a href="https://wa.me/51990993247" rel="noopener">990 993 247</a></p>
-          </div>
-        </div>
-
-            <section class="social-links-panel" id="redes-sociales" aria-labelledby="redes-sociales-titulo">
-      <h2 id="redes-sociales-titulo">Síguenos en nuestras redes</h2>
-      <p>Conoce las novedades de BOTICAS DEL DR JUAN.</p>
-      <nav class="social-link-buttons" aria-label="Redes sociales de BOTICAS DEL DR JUAN">
-        <a class="social-link-button social-link-button--facebook" href="https://www.facebook.com/boticasdeldrjuan" target="_blank" rel="noopener noreferrer" aria-label="Facebook de BOTICAS DEL DR JUAN (abre en otra pestaña)">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 22v-9h3l.5-3h-3.5V8c0-1 .3-1.5 1.6-1.5H17V3.8c-.7-.1-1.5-.3-2.5-.3-2.5 0-4 1.5-4 4.3V10H8v3h2.5v9z"/></svg>
-          <span>Facebook</span>
-        </a>
-        <a class="social-link-button social-link-button--tiktok" href="https://www.tiktok.com/@boticasdeldrjuan" target="_blank" rel="noopener noreferrer" aria-label="TikTok de BOTICAS DEL DR JUAN (abre en otra pestaña)">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 2h3c.2 2.2 1.5 3.6 4 4v3c-1.6 0-3-.5-4-1.3V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/></svg>
-          <span>TikTok</span>
-        </a>
-      </nav>
-      <p class="social-links-note">Los enlaces se abren en otra pestaña.</p>
-    </section>
-<p class="small">La orientación farmacéutica no reemplaza una evaluación médica. No realizamos diagnósticos ni prescribimos medicamentos por este medio.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <strong>BOTICAS DEL DR JUAN</strong><br>
-    IDEAFAB S.A. · RUC 20606338806 · Perú
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#681426">
+<meta name="description" content="Boticas del Dr. Juan. Explora nuestras categorías y consulta productos con atención humana desde Lima Norte.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://boticasdeldrjuan.com/">
+<title>Boticas del Dr. Juan | Estamos más cerca de ti</title>
+<style>
+:root{--vino:#75152b;--vino2:#9e2644;--oro:#edb949;--fondo:#fffaf5;--texto:#30262b;--muted:#776b70;--linea:#ede1e4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);color:var(--texto);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}a{text-decoration:none;color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+.shell{width:min(1250px,calc(100% - 36px));margin:auto}
+.top{background:#4a1023;color:#fff;text-align:center;font-size:12px;padding:9px 12px}.top strong{color:#ffdc91}
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 5px 24px #4c203015}.head{display:flex;align-items:center;gap:24px;min-height:100px}.logo{width:155px;height:71px;object-fit:contain}.search{display:flex;align-items:center;flex:1;background:#faf7f6;border:1px solid #dfced3;border-radius:15px;overflow:hidden}.search input{flex:1;min-width:0;border:0;background:transparent;padding:16px;font-size:14px}.search button{background:var(--vino);border:0;color:#fff;font-weight:800;min-height:51px;padding:0 24px}.link{font-weight:800;color:var(--vino);white-space:nowrap;font-size:13px}
+nav{border-top:1px solid #f1e8eb}.nav{display:flex;gap:30px;align-items:center;overflow:auto;padding:12px 0;white-space:nowrap;font-weight:750;font-size:13px;color:#5e4552}
+.hero{position:relative;background:linear-gradient(113deg,#5b1024,#992541 53%,#c45d66);border-radius:28px;color:#fff;min-height:425px;margin:25px 0 0;padding:57px;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;align-items:center}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:#ffdf91;font-weight:900}.hero h1{font-size:clamp(38px,5vw,66px);line-height:1.04;letter-spacing:-.05em;margin:14px 0;max-width:650px}.hero p{font-size:16px;max-width:560px;color:#ffedf2}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:99px;font-weight:850;font-size:14px;min-height:49px}.btn.gold{background:var(--oro);color:#532632}.btn.white{background:#ffffff19;color:white;border:1px solid #ffffff82}
+.hero-art{position:relative;height:310px;display:grid;place-items:center}.circle{position:absolute;width:330px;height:330px;border:1px solid #ffffff50;border-radius:50%;background:#ffffff19}.hero-art strong{font-size:clamp(90px,15vw,175px);transform:rotate(-12deg);filter:drop-shadow(0 15px 18px #3a0d2055);z-index:2}.hero-art .spark{position:absolute;top:22px;right:4%;font-size:60px;color:#ffda7c}.slide-control{display:flex;gap:8px;margin-top:24px}.slide-control button{width:35px;height:6px;border:0;border-radius:10px;background:#ffffff80;padding:0}.slide-control button.active{background:var(--oro);width:65px}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:16px 0 38px}.trust div{background:#fff;border:1px solid var(--linea);padding:17px 21px;border-radius:16px;font-size:13px;color:var(--muted)}.trust b{display:block;color:var(--vino);font-size:15px}
+.heading{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:40px 0 19px}.heading h2{font-size:clamp(25px,3vw,34px);color:#57172c;letter-spacing:-.04em;margin:0}.heading small{color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}.category{border:1px solid var(--linea);border-radius:17px;background:#fff;min-height:158px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;gap:8px;transition:transform .2s,box-shadow .2s}.category:hover{transform:translateY(-4px);box-shadow:0 16px 30px #58142e15}.category span{font-size:43px;background:#fff3ed;border-radius:16px;width:76px;height:76px;display:grid;place-items:center}.category b{font-size:13px;color:var(--vino)}
+.promo{background:#fff0df;border:1px solid #f1d8bd;border-radius:23px;margin:35px 0;padding:27px 32px;display:flex;align-items:center;justify-content:space-between;gap:25px}.promo h2{font-size:25px;margin:0;color:var(--vino)}.promo p{color:#785f65;margin:6px 0 0}.promo a{background:var(--vino);color:white;padding:13px 20px;border-radius:30px;font-size:13px;font-weight:800;white-space:nowrap}
+.preview{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 60px}.preview .panel{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:28px;min-height:230px}.preview .panel b{color:var(--vino)}.preview h3{margin:10px 0;font-size:23px;line-height:1.2;color:#57172c}.preview p{font-size:14px;color:var(--muted)}.preview a{font-weight:850;color:var(--vino);display:inline-flex;margin-top:10px}
+.notice{background:#fff8e6;border:1px solid #ebd69e;border-radius:12px;padding:13px 16px;color:#6d5636;font-size:12px;margin-bottom:30px}footer{background:#331923;color:#eadde1;padding:35px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}.foot a{display:block;margin:7px 0}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:38px}.hero-art{position:absolute;right:-140px;top:0;bottom:0;opacity:.25;width:70%}.hero h1{max-width:580px}.trust{grid-template-columns:1fr}.categories{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:580px){.shell{width:min(1250px,calc(100% - 26px))}.head{flex-wrap:wrap;gap:10px;min-height:105px;padding:9px 0}.logo{width:115px;height:60px}.link{margin-left:auto}.search{order:3;flex:1 0 100%}.search input{padding:13px}.search button{padding:0 15px;min-height:46px}.hero{padding:32px 22px;min-height:400px;border-radius:19px}.hero h1{font-size:43px}.hero p{font-size:14px}.hero-art{right:-190px}.categories{gap:9px}.category{min-height:120px}.category span{width:55px;height:55px;font-size:31px}.category b{font-size:11px}.promo{display:block;padding:24px}.promo a{display:inline-flex;margin-top:14px}.preview{grid-template-columns:1fr}.heading small{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="top">BOTICAS DEL DR. JUAN <strong>· Nueva experiencia digital en desarrollo</strong> · Atención comercial por WhatsApp</div>
+<header><div class="shell head"><a href="/" aria-label="Inicio"><img class="logo" src="/logo-dr-juan.webp" alt="Boticas del Dr. Juan"></a><form class="search" action="/marketplace-v2.html" method="get"><input name="q" type="search" maxlength="70" placeholder="¿Qué producto estás buscando?" aria-label="Buscar en demo de productos"><button type="submit">Buscar</button></form><a class="link" href="https://wa.me/51990993246?text=Hola%2C%20deseo%20consultar%20un%20producto" target="_blank" rel="noopener">💬 Hablar con botica</a></div>
+<nav><div class="shell nav"><a href="/marketplace-v2.html">Explorar tienda de prueba</a><a href="/catalogo-piloto.html">Catálogo de categorías</a><a href="/marketplace-v2.html#rx-info">Medicamentos y recetas</a><a href="https://boticasimilares.com/">Nuestra empresa</a></div></nav></header>
+<main class="shell">
+<section class="hero" aria-label="Boticas del Dr. Juan"><div><span class="eyebrow" id="eyebrow">BOTICAS DEL DR. JUAN · LIMA NORTE</span><h1 id="headline">Cuidarte debería ser fácil. <span style="color:#ffd88f">Y estar cerca.</span></h1><p id="description">Una forma más ágil de explorar productos, conocer nuestras categorías y conectar con nuestra botica desde cualquier lugar.</p><div class="buttons"><a class="btn gold" href="/marketplace-v2.html">Conoce nuestra nueva tienda →</a><a class="btn white" href="https://wa.me/51990993246?text=Hola%2C%20deseo%20consultar%20un%20producto" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><div class="slide-control"><button type="button" data-slide="0" class="active" aria-label="Ver mensaje 1"></button><button type="button" data-slide="1" aria-label="Ver mensaje 2"></button><button type="button" data-slide="2" aria-label="Ver mensaje 3"></button></div></div><div class="hero-art" aria-hidden="true"><div class="circle"></div><strong>🛍️</strong><span class="spark">✦</span></div></section>
+<div class="trust"><div><b>💬 Atención humana</b>Estamos para orientarte sobre disponibilidad y condiciones de venta.</div><div><b>📍 Lima Norte</b>Consulta cobertura y existencias con tu botica.</div><div><b>🛡️ Atención responsable</b>Los medicamentos se dispensan conforme a los controles aplicables.</div></div>
+<section aria-labelledby="cat-title"><div class="heading"><h2 id="cat-title">Explora nuestras categorías</h2><small>Selecciona una para visitar el catálogo de prueba</small></div><div class="categories">
+<a class="category" href="/marketplace-v2.html"><span>🧼</span><b>Higiene personal</b></a>
+<a class="category" href="/marketplace-v2.html"><span>🪥</span><b>Salud bucal</b></a>
+<a class="category" href="/marketplace-v2.html"><span>🧴</span><b>Cabello</b></a>
+<a class="category" href="/marketplace-v2.html"><span>🦶</span><b>Cuidado corporal</b></a>
+<a class="category" href="/marketplace-v2.html"><span>🩹</span><b>Botiquín</b></a>
+<a class="category" href="/catalogo-piloto.html"><span>💊</span><b>Farmacia</b></a>
+</div></section>
+<div class="promo"><div><h2>Una experiencia de tienda más dinámica.</h2><p>Explora nuestro nuevo diseño, prueba el carrito y ayúdanos a preparar el lanzamiento.</p></div><a href="/marketplace-v2.html">Ver prototipo interactivo →</a></div>
+<section aria-labelledby="exp-title"><div class="heading"><h2 id="exp-title">Tu atención, a un clic.</h2></div><div class="preview"><div class="panel"><b>EXPLORA</b><h3>Busca productos, compara y arma tu selección.</h3><p>Prueba el diseño del futuro marketplace. Los precios y fotografías son de referencia y la compra está deshabilitada.</p><a href="/marketplace-v2.html">Abrir tienda de demostración →</a></div><div class="panel"><b>CONSULTA</b><h3>Habla directamente con nuestra botica.</h3><p>Para saber precios confirmados, condición de venta y disponibilidad actual, nuestro equipo atiende tus consultas.</p><a href="https://wa.me/51990993246?text=Hola%2C%20deseo%20consultar%20un%20producto" target="_blank" rel="noopener">Consultar disponibilidad →</a></div></div></section>
+<div class="notice"><b>Información al consumidor:</b> El marketplace aún se encuentra en etapa de pruebas. El carrito de demostración no registra pedidos ni cobros. La compra de productos farmacéuticos estará sujeta a revisión sanitaria y cumplimiento de las condiciones de dispensación.</div>
+</main><footer><div class="shell foot"><div><b>BOTICAS DEL DR. JUAN</b><br>IDEAFAB S.A. · Perú</div><div><a href="https://boticasimilares.com/">Información institucional</a><a href="https://www.facebook.com/boticasdeldrjuan" target="_blank" rel="noopener">Facebook</a><a href="https://www.tiktok.com/@boticasdeldrjuan" target="_blank" rel="noopener">TikTok</a></div><div><a href="https://wa.me/51990993246" target="_blank" rel="noopener">WhatsApp comercial</a><a href="https://wa.me/51990993247" target="_blank" rel="noopener">Orientación</a></div></div></footer>
+<script>
+"use strict";
+const messages=[
+["BOTICAS DEL DR. JUAN · LIMA NORTE","Cuidarte debería ser fácil. Y estar cerca.","Una forma más ágil de explorar productos, conocer nuestras categorías y conectar con nuestra botica desde cualquier lugar."],
+["NUEVA EXPERIENCIA DIGITAL","Tus productos de siempre. Una forma nueva de encontrarlos.","Búsqueda rápida, categorías y una experiencia visual optimizada para tu celular."],
+["ATENCIÓN CERCANA","Cuidado real. Atención que acompaña.","Explora las opciones y consulta con nuestra botica la disponibilidad de productos."]
+];let active=0;function show(i){active=i;document.getElementById("eyebrow").textContent=messages[i][0];document.getElementById("headline").textContent=messages[i][1];document.getElementById("description").textContent=messages[i][2];document.querySelectorAll("[data-slide]").forEach(b=>b.classList.toggle("active",Number(b.dataset.slide)===i))}
+document.querySelectorAll("[data-slide]").forEach(b=>b.onclick=()=>show(Number(b.dataset.slide)));
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches)setInterval(()=>{if(!document.hidden)show((active+1)%3)},6200);
+</script></body></html>
